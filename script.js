@@ -67,6 +67,15 @@ const fortunes = {
             `You laugh now. Wait till you get home to ${string}.`
            ];
     },
+    createFortune(category, word) {
+        if(category === 'future'){
+            this.futureFortunes = word;
+        } else if(category == 'inspirational'){
+            this.inspirationalFortunes = word;
+        } else if(category == 'funny'){
+            this.funnyFortunes = word;
+        }
+    },
     generateFortune(category) {
         if(category === 'future'){
             return this._futureFortunes[Math.floor(Math.random() * 3)]
@@ -78,3 +87,12 @@ const fortunes = {
         
     }
 };
+
+const randomFortune = () => {
+    const category = wordBank.generateCategory();
+    const word = wordBank.generateWord(category);
+    fortunes.createFortune(category, word)
+    console.log(fortunes.generateFortune(category))
+}
+
+randomFortune();
