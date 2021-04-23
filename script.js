@@ -1,31 +1,15 @@
-// Future Fortune
-// {person} will be coming into your life... --> Friends, strangers, dogs, gaming computers
-// A lifetime of {happiness} lies ahead of you. --> sadness, riches, drama, happy memories
-// {Long life} is in store for you. --> puppies, hunger, chores, success
 
-// Inspirational fortune
-// Don’t just think, {act}! --> invest, eat, learn, donate
-// Failure is the chance to {do better next time}. --> try again, learn, forgive
-// Now is the time to {try something new} --> treat yourself, confess your love, improve yourself, start coding
-
-// Funny Fortune
-// Help! I’m being held prisoner by {} --> 
-// {Imagination} rules the world. --> 
-// You laugh now. Wait till you get home to. --> Voldemort, Chicken Nuggets, Noobs, Evil Chickens, Santa Claus, Dwight Schrute, Crying babies, Donald Trump, Steve Urkel
-    // options: [
-    //             ['friend', 'stranger', 'dog', 'gaming computer'],
-    //             ['sadness', 'riches', 'drama', 'happy memories'],
-    //             ['puppies', 'hunger', 'chores', 'success']
-    //          ]
 const wordBank = {
     _categories: ['future', 'inspirational', 'funny'],
     _future: ['friends', 'strangers', 'dogs', 'gaming computers', 'sadness', 'riches', 'drama', 'happy memories', 'puppies', 'hunger', 'chores', 'success'],
     _inspirational: ['invest', 'eat', 'learn', 'donate', 'try again', 'learn', 'forgive', 'treat yourself', 'confess your love', 'improve yourself', 'start coding'],
     _funny: ['Voldemort', 'chicken nuggets', 'noobs', 'evil chickens', 'Santa Clause', 'Dwight Schrute', 'crying babies', 'Donald Trump', 'Steve Urkel'],
+    
     generateCategory() {
         const index = Math.floor(Math.random() * 3);
         return this._categories[index];
     },
+
     generateWord(category) {
         let word;
         switch(category) {
@@ -42,10 +26,12 @@ const wordBank = {
         return word;
     }
 }
+
 const fortunes = {
     _futureFortunes: [],
     _inspirationalFortunes: [],
     _funnyFortunes: [],
+
     set futureFortunes(string) {
         this._futureFortunes = [
             `${string} will be coming into your life...`, 
@@ -53,6 +39,7 @@ const fortunes = {
             `${string} is in store for you.`
            ];
     },
+
     set inspirationalFortunes(string) {
         this._inspirationalFortunes = [
             `Don't just think. ${string}!`, 
@@ -60,6 +47,7 @@ const fortunes = {
             `Now is the time to ${string}.`
            ];
     },
+
     set funnyFortunes(string) {
         this._funnyFortunes = [
             `Help! I’m being held prisoner by ${string}!`, 
@@ -67,6 +55,7 @@ const fortunes = {
             `You laugh now. Wait till you get home to ${string}.`
            ];
     },
+
     createFortune(category, word) {
         if(category === 'future'){
             this.futureFortunes = word;
@@ -76,6 +65,7 @@ const fortunes = {
             this.funnyFortunes = word;
         }
     },
+
     generateFortune(category) {
         if(category === 'future'){
             return this._futureFortunes[Math.floor(Math.random() * 3)]
